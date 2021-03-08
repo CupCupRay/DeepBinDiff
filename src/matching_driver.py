@@ -31,13 +31,22 @@ else:
 # Set to false as default, which can get better result for now.
 EBD_CALL_GRAPH = False 
 
+def execCmd(cmd):
+	r = os.popen(cmd)
+	text = r.read()
+	r.close()
+	return text
+
 
 def pre_matching(bin1_name, bin2_name, toBeMergedBlocks={}):
     # if sys.platform != "win32":
 
 
     tadw_command = "python3 ./src/performTADW.py --method tadw --input " + bin_edgelist_file + " --graph-format edgelist --feature-file " + bin_features_file + " --output vec_all"
-    os.system(tadw_command)
+    result = execCmd(tadw_command)
+    print("---------------------------- TADW Result ----------------------------")
+    print(result)
+    print("-------------------------- END TADW Result --------------------------")
     
     ebd_dic, _ = utility.ebd_file_to_dic(embedding_file)
 

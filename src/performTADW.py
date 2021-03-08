@@ -139,3 +139,4 @@ if __name__ == "__main__":
     random.seed(32)
     np.random.seed(32)
     main(parse_args())
+    print("Finish vec_all")
